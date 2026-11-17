@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Physics Mock Test – Electric Charges and Fields</title>
+<style>
+:root{--ink:#14213d;--muted:#5b6478;--bg:#eef2f8;--card:#fff;--line:#d6ddea;--accent:#1f5fbf;--accent-soft:#e3edfb;--ok:#1b8a4b;--ok-soft:#e2f5ea;--bad:#c62f3a;--bad-soft:#fde8ea;--warn:#b7791f}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5;-webkit-tap-highlight-color:transparent}
+.wrap{max-width:760px;margin:0 auto;padding:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px}
+h1{font-size:1.6rem;line-height:1.2;margin:0 0 8px}
+h2{font-size:1.15rem;margin:0 0 12px}
+.muted{color:var(--muted)}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 22px;border-radius:12px;border:2px solid var(--accent);background:var(--accent);color:#fff;font-size:1rem;font-weight:600;cursor:pointer;font-family:inherit}
+.btn.ghost{background:#fff;color:var(--accent)}
+.btn.danger{background:var(--ink);border-color:var(--ink)}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.btn:focus-visible,.opt:focus-visible,.qn:focus-visible{outline:3px solid var(--warn);outline-offset:2px}
+.hidden{display:none!important}
+.facts{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:18px 0}
+.facts div{background:var(--accent-soft);border-radius:12px;padding:12px}
+.facts b{display:block;font-size:1.3rem}
+.rules{padding-left:20px;margin:0 0 20px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:10px;font-weight:600}
+.timer{background:var(--ink);color:#fff;border-radius:999px;padding:6px 14px;font-variant-numeric:tabular-nums}
+.bar{height:8px;background:var(--line);border-radius:8px;overflow:hidden;margin-bottom:12px}
+.bar i{display:block;height:100%;width:0;background:var(--accent);transition:width .2s}
+.nav{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:14px}
+.qn{min-height:46px;border-radius:10px;border:2px solid var(--line);background:#fff;color:var(--ink);font-weight:600;font-size:1rem;cursor:pointer;font-family:inherit}
+.qn.done{background:var(--accent-soft);border-color:var(--accent);color:var(--accent)}
+.qn.cur{background:var(--ink);border-color:var(--ink);color:#fff}
+.legend{font-size:.85rem;color:var(--muted);margin:-4px 0 14px;display:flex;gap:14px;flex-wrap:wrap}
+.legend span::before{content:"";display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px;border:2px solid var(--line)}
+.legend .a::before{background:var(--accent-soft);border-color:var(--accent)}
+.legend .c::before{background:var(--ink);border-color:var(--ink)}
+.level{display:inline-block;font-size:.8rem;font-weight:600;padding:2px 10px;border-radius:999px;background:var(--accent-soft);color:var(--accent);margin-bottom:8px}
+.qtext{font-size:1.2rem;font-weight:600;margin:0 0 16px}
+.opt{display:flex;gap:12px;align-items:center;width:100%;text-align:left;min-height:56px;padding:10px 14px;margin-bottom:10px;border:2px solid var(--line);border-radius:12px;background:#fff;color:var(--ink);font-size:1.05rem;cursor:pointer;font-family:inherit}
+.opt .l{flex:none;width:32px;height:32px;border-radius:50%;background:var(--bg);display:grid;place-items:center;font-weight:700}
+.opt.sel{border-color:var(--accent);background:var(--accent-soft)}
+.opt.sel .l{background:var(--accent);color:#fff}
+.foot{display:flex;gap:10px;margin-top:14px}
+.foot .btn{flex:1}
+.score{text-align:center;padding:10px 0 4px}
+.score .big{font-size:3rem;font-weight:800;line-height:1}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:16px 0}
+.grid div{border:1px solid var(--line);border-radius:12px;padding:12px}
+.grid b{display:block;font-size:1.3rem}
+.grid .ok b{color:var(--ok)}.grid .bad b{color:var(--bad)}
+.rev{border:2px solid var(--line);border-radius:14px;padding:14px;margin-bottom:12px;background:#fff}
+.rev.ok{border-color:var(--ok);background:var(--ok-soft)}
+.rev.bad{border-color:var(--bad);background:var(--bad-soft)}
+.rev.skip{border-color:var(--warn)}
+.rev p{margin:0 0 8px;font-weight:600}
+.rev .row{font-size:.95rem;margin:2px 0}
+.tag{font-weight:700}.tag.ok{color:var(--ok)}.tag.bad{color:var(--bad)}.tag.skip{color:var(--warn)}
+.modal{position:fixed;inset:0;background:rgba(20,33,61,.55);display:flex;align-items:center;justify-content:center;padding:16px;z-index:10}
+.modal .card{max-width:420px;width:100%}
+.modal .foot{margin-top:16px}
+@media(min-width:600px){.wrap{padding:28px}.card{padding:28px}.nav{grid-template-columns:repeat(15,1fr)}.grid{grid-template-columns:repeat(3,1fr)}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<section id="welcome" class="card">
+  <h1>Physics Mock Test</h1>
+  <p class="muted">Class 12 CBSE · Chapter 1 – Electric Charges and Fields</p>
+  <div class="facts">
+    <div><b>15</b>Questions</div>
+    <div><b>15</b>Total marks</div>
+    <div><b>+1 / 0</b>Correct / wrong</div>
+    <div><b>No limit</b>Your time is tracked</div>
+  </div>
+  <ul class="rules">
+    <li>Questions go from easy to high difficulty.</li>
+    <li>You can change any answer before you submit.</li>
+    <li>The answer key appears only after you submit.</li>
+  </ul>
+  <button class="btn" id="startBtn" style="width:100%">Start test</button>
+</section>
+
+<section id="test" class="hidden">
+  <div class="top"><span id="qcount">Question 1 of 15</span><span class="timer" id="timer">00:00</span></div>
+  <div class="bar"><i id="bar"></i></div>
+  <div class="nav" id="nav"></div>
+  <div class="legend"><span class="a">Answered</span><span>Not answered</span><span class="c">Current</span></div>
+  <div class="card">
+    <span class="level" id="level"></span>
+    <p class="qtext" id="qtext"></p>
+    <div id="opts"></div>
+  </div>
+  <div class="foot">
+    <button class="btn ghost" id="prev">Previous</button>
+    <button class="btn" id="next">Next</button>
+  </div>
+  <div class="foot"><button class="btn danger" id="submit">Submit test</button></div>
+</section>
+
+<section id="result" class="hidden">
+  <div class="card">
+    <div class="score"><div class="big" id="rScore"></div><div class="muted">Marks obtained out of 15</div></div>
+    <div class="grid" id="rGrid"></div>
+    <button class="btn" id="restart1" style="width:100%">Restart test</button>
+  </div>
+  <h2 style="margin:20px 4px 10px">Answer review</h2>
+  <div id="review"></div>
+  <button class="btn" id="restart2" style="width:100%;margin-bottom:24px">Restart test</button>
+</section>
+
+</div>
+
+<div class="modal hidden" id="modal">
+  <div class="card">
+    <h2>Submit the test?</h2>
+    <p id="modalMsg" class="muted"></p>
+    <div class="foot">
+      <button class="btn ghost" id="cancel">Keep working</button>
+      <button class="btn danger" id="confirm">Submit</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+var Q=[
+["Easy","What is the charge of an electron?",["+1.6 × 10⁻¹⁹ C","−1.6 × 10⁻¹⁹ C","+1.6 × 10⁻¹⁸ C","Zero"],1],
+["Easy","According to the law of conservation of charge:",["Charge can be created easily.","Charge can be destroyed easily.","Total electric charge of an isolated system remains constant.","Charge always increases."],2],
+["Easy","If the distance between two point charges is doubled, the electrostatic force becomes:",["Double","Four times","Half","One-fourth"],3],
+["Easy","Like electric charges:",["Attract each other","Repel each other","Have no force between them","Always become neutral"],1],
+["Easy","The SI unit of electric charge is:",["Newton","Joule","Coulomb","Volt"],2],
+["Moderate","A charge of 2 μC is placed in an electric field of 3 × 10⁴ N/C. What force acts on it?",["0.006 N","0.06 N","0.6 N","6 N"],1],
+["Moderate","Two equal forces F act perpendicular to each other. What is their resultant magnitude?",["F","2F","√2 F","F/2"],2],
+["Moderate","Find the electric field at a distance of 0.3 m from a point charge of 4 μC in vacuum. Take k = 9 × 10⁹ N m²/C².",["4 × 10⁴ N/C","4 × 10⁵ N/C","4 × 10⁶ N/C","4 × 10³ N/C"],1],
+["Moderate","The electric field due to a short electric dipole at a distant axial point varies with distance r as:",["1/r","1/r²","1/r³","1/r⁴"],2],
+["Moderate","The torque acting on an electric dipole in a uniform electric field is:",["pE cos θ","pE sin θ","p/E","E/p"],1],
+["High","Two identical positive charges are placed at equal distances on either side of a midpoint. The net electric field at the midpoint is:",["Maximum","Zero","Infinite","Always positive"],1],
+["High","Two identical positive point charges are placed symmetrically on either side of a midpoint. At the midpoint:",["Both electric field and potential are zero.","Electric field is zero, but potential is positive.","Electric field is maximum and potential is zero.","Both electric field and potential are negative."],1],
+["High","According to Gauss's law, the total electric flux through a closed surface enclosing charge q is:",["qε₀","q/ε₀","ε₀/q","Zero for every closed surface"],1],
+["High","The magnitude of the electric field due to an infinite plane sheet of uniform charge is:",["σ/ε₀","σ/2ε₀","2σ/ε₀","Zero"],1],
+["High","The electric field at an external point due to a uniformly charged thin spherical shell is equivalent to the field produced by:",["A point charge at the centre","A point charge on the surface","A zero charge","A dipole at the centre"],0]
+];
+var N=Q.length,L="ABCD",ans,cur,t0,tick,elapsed=0;
+function $(i){return document.getElementById(i)}
+function show(id){["welcome","test","result"].forEach(function(s){$(s).classList.toggle("hidden",s!==id)});window.scrollTo(0,0)}
+function fmt(s){var m=Math.floor(s/60),r=s%60;return(m<10?"0":"")+m+":"+(r<10?"0":"")+r}
+function words(s){var m=Math.floor(s/60),r=s%60;return m+" min "+r+" sec"}
+function start(){
+  ans=new Array(N).fill(-1);cur=0;elapsed=0;t0=Date.now();
+  clearInterval(tick);$("timer").textContent="00:00";
+  tick=setInterval(function(){elapsed=Math.floor((Date.now()-t0)/1000);$("timer").textContent=fmt(elapsed)},500);
+  buildNav();show("test");render();
+}
+function buildNav(){
+  var h="";for(var i=0;i<N;i++)h+='<button class="qn" data-i="'+i+'" aria-label="Question '+(i+1)+'">'+(i+1)+'</button>';
+  $("nav").innerHTML=h;
+}
+function render(){
+  var q=Q[cur];
+  $("qcount").textContent="Question "+(cur+1)+" of "+N;
+  $("level").textContent=q[0]+" level";
+  $("qtext").textContent=(cur+1)+". "+q[1];
+  var h="";q[2].forEach(function(o,i){
+    h+='<button class="opt'+(ans[cur]===i?" sel":"")+'" data-o="'+i+'" aria-pressed="'+(ans[cur]===i)+'"><span class="l">'+L[i]+'</span><span>'+o+'</span></button>';
+  });
+  $("opts").innerHTML=h;
+  var done=0;[].forEach.call($("nav").children,function(b,i){
+    var a=ans[i]>=0;if(a)done++;
+    b.className="qn"+(a?" done":"")+(i===cur?" cur":"");
+  });
+  $("bar").style.width=(done/N*100)+"%";
+  $("prev").disabled=cur===0;
+  $("next").disabled=cur===N-1;
+}
+function submit(){
+  clearInterval(tick);elapsed=Math.floor((Date.now()-t0)/1000);
+  var c=0,w=0,u=0,h="";
+  Q.forEach(function(q,i){
+    var a=ans[i],cls,tag,sel;
+    if(a<0){u++;cls="skip";tag='<span class="tag skip">Not attempted</span>';sel="Not attempted"}
+    else if(a===q[3]){c++;cls="ok";tag='<span class="tag ok">✓ Correct</span>';sel=L[a]+". "+q[2][a]}
+    else{w++;cls="bad";tag='<span class="tag bad">✗ Incorrect</span>';sel=L[a]+". "+q[2][a]}
+    h+='<div class="rev '+cls+'"><p>Q'+(i+1)+'. '+q[1]+'</p>'+
+      '<div class="row">Your answer: '+sel+'</div>'+
+      '<div class="row">Correct answer: '+L[q[3]]+'. '+q[2][q[3]]+'</div>'+
+      '<div class="row">'+tag+'</div></div>';
+  });
+  var att=c+w,acc=att?Math.round(c/att*1000)/10:0;
+  $("rScore").textContent=c+" / "+N;
+  $("rGrid").innerHTML=
+    '<div><span class="muted">Total marks</span><b>'+N+'</b></div>'+
+    '<div><span class="muted">Marks obtained</span><b>'+c+'</b></div>'+
+    '<div class="ok"><span class="muted">Correct</span><b>'+c+'</b></div>'+
+    '<div class="bad"><span class="muted">Incorrect</span><b>'+w+'</b></div>'+
+    '<div><span class="muted">Unattempted</span><b>'+u+'</b></div>'+
+    '<div><span class="muted">Time taken</span><b>'+words(elapsed)+'</b></div>'+
+    '<div style="grid-column:1/-1"><span class="muted">Accuracy (correct of attempted)</span><b>'+acc+'%</b></div>';
+  $("review").innerHTML=h;
+  $("modal").classList.add("hidden");
+  show("result");
+}
+$("startBtn").onclick=start;
+$("restart1").onclick=start;$("restart2").onclick=start;
+$("prev").onclick=function(){if(cur>0){cur--;render()}};
+$("next").onclick=function(){if(cur<N-1){cur++;render()}};
+$("nav").onclick=function(e){var b=e.target.closest(".qn");if(b){cur=+b.dataset.i;render()}};
+$("opts").onclick=function(e){var b=e.target.closest(".opt");if(b){ans[cur]=+b.dataset.o;render()}};
+$("submit").onclick=function(){
+  var left=ans.filter(function(a){return a<0}).length;
+  $("modalMsg").textContent=left?("You have "+left+" unanswered question"+(left>1?"s":"")+". Once you submit, you cannot change your answers."):"You have answered all questions. Once you submit, you cannot change your answers.";
+  $("modal").classList.remove("hidden");
+};
+$("cancel").onclick=function(){$("modal").classList.add("hidden")};
+$("confirm").onclick=submit;
+})();
+</script>
+</body>
+</html>
